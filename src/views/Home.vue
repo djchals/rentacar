@@ -1,18 +1,18 @@
 <template>
 	<div class="container">
-		<h4 class="center">Reservatuvehiculo.com</h4>
+		<h4 class="center">Rentacar.com</h4>
 		<form @submit.prevent="sendData" name="formRent" action="/" method="post">
 			<div class="row">
 				<div class="col s12">
-					<p class="center">Selecciona los datos de tu reserva</p>
+					<p class="center">Select your reservation details </p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col s12">
 					<div class="input-field col s4">
 						<select class="browser-default" name="type">
-							<option value="car">Coche</option>
-							<option value="motorbike">Moto</option>
+							<option value="car">Car</option>
+							<option value="motorbike">Motorbike</option>
 						</select>
 					</div>
 				</div>
@@ -21,18 +21,18 @@
 				<div class="col s12">
 					<div class="input-field col s6">
 						<input type="text" id="originPlace" name="originPlace" required class="validate">
-						<label for="originPlace">Lugar de recogida</label>
+						<label for="originPlace">Origin Place</label>
 					</div>
 					<div class="input-field col s6">
 						<input type="text" id="returnPlace" name="returnPlace" required class="validate">
-						<label for="returnPlace">Lugar de devolución</label>
+						<label for="returnPlace">Return Place</label>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
 					<div class="col s12">
-						<label for="originDate">Recogida a las</label>
+						<label for="originDate">Picked up at</label>
 					</div>
 					<div class="col s12 m6 l6">
 						<input
@@ -60,7 +60,7 @@
 				</div>
 				<div class="input-field col s6">
 					<div class="col s12">
-						<label for="returnDate">Devolución a las</label>
+						<label for="returnDate">Returned at</label>
 					</div>
 					<div class="col s12 m6 l6">
 						<input
@@ -89,7 +89,7 @@
 			</div>
 			<div class="row">
 				<div class="col s12">
-					<button class="right btn waves-effect waves-light" type="submit" name="action">Buscar vehículo</button>
+					<button class="right btn waves-effect waves-light" type="submit" name="action">Search vehicle</button>
 				</div>
 			</div>
 		</form>
@@ -111,7 +111,7 @@ export default {
 			const returnTimeUnix = this.convertDateTimeToTimeUnix (document.formRent.returnDate.value, document.formRent.returnTime.value)
 
 			if (originTimeUnix >= returnTimeUnix) {
-				alert('La fecha de inicio tiene que ser anterior a la fecha de retorno')
+				alert('The Origin Date must be previous to the Return Date.')
 				flagSend = false
 			}
 
