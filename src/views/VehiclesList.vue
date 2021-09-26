@@ -1,33 +1,37 @@
 <template>
-  <div>
-    <h1>Vehicles list</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>Photo</th>
-				<th>Type</th>
-				<th>Model</th>
-				<th>Features</th>
-				<th>Price/day</th>
-				<th>Price total rental days</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr v-for="(actV,index) of arrVehicles" :key="index">
-				<td><a :href="actV.photo" target="_blank">View photo</a></td>
-				<td>{{ actV.type }}</td>
-				<td>{{ actV.model }}</td>
-				<td>{{ actV.features }}</td>
-				<td>{{ actV.priceDay }}E/day</td>
-				<td>{{ actV.priceDay * datesDiff}}E</td>
-			</tr>
-		</tbody>
-	</table>
-	<h3>Total rental days: {{ datesDiff }}</h3>
-		<p class="mt-5">
-			<router-link to="/"><i class="material-icons">arrow_back</i></router-link>
-	</p>
-  </div>
+	<div>
+		<div>
+			<div class="collection">
+				<h4 class="center">Vehicles list</h4>
+				<table class="mb-5">
+					<caption>Total rental days: {{ datesDiff }}</caption>
+					<thead>
+						<tr>
+							<th class="center">Photo</th>
+							<th class="center">Type</th>
+							<th class="center">Model</th>
+							<th class="center">Features</th>
+							<th class="center">Price/day</th>
+							<th class="center">Price total rental days</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(actV,index) of arrVehicles" :key="index">
+							<td class="center"><a :href="actV.photo" target="_blank"><i class="material-icons">remove_red_eye</i></a></td>
+							<td class="center"><i class="material-icons">{{ arrIconsType[actV.type] }}</i></td>
+							<td class="center">{{ actV.model }}</td>
+							<td class="center">{{ actV.features }}</td>
+							<td class="center">{{ actV.priceDay }}E/day</td>
+							<td class="center">{{ actV.priceDay * datesDiff}}E</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="mt-5">
+				<router-link to="/"><i class="material-icons">arrow_back</i></router-link>
+			</p>
+		</div>
+	</div>
 </template>
 <script>
 import DB from '../models/db.js'
@@ -35,6 +39,10 @@ export default {
 	data () {
 		return {
 			arrVehicles: [],
+			arrIconsType: {
+				car: 'directions_car',
+				motorbike: 'motorcycle'
+			},
 			datesDiff: 0
 		}
 	},
