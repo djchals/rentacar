@@ -133,9 +133,6 @@ export default {
 
 			return tmpDateTime.getTime ()
 		}
-	},
-	mounted () {
-		console.log(this.arrVehicles)
 	}
 }
 </script>
